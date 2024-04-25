@@ -32,15 +32,25 @@ export async function create(prevState: any, formData: FormData){
     if (resp.ok){
         redirect("/movimentacoes")
     }
-
-    if(resp.status == 400){
-        const messages = await resp.json()
-
-        return {
-            message_descricao: messages.find( (m: any) => m.campo == "descricao")?.mensagem || '',
-            message_valor: messages.find( (m: any) => m.campo == "valor")?.mensagem || '',
-            message_data: messages.find( (m: any) => m.campo == "data")?.mensagem || '',
+    if (resp.status === 400) {
+        const messages = await resp.json();
+    
+        if (Array.isArray(messages)) {
+            return {
+                message_descricao: messages.find((m) => m.campo === "descricao")?.mensagem || '',
+                message_valor: messages.find((m) => m.campo === "valor")?.mensagem || '',
+                message_data: messages.find((m) => m.campo === "data")?.mensagem || '',
+            };
+        } else {
+           
+            console.error("O objeto messages não é uma array:", messages);
+            return {
+                message_descricao: "Ocorreu um erro ao processar a requisição.",
+                message_valor: "Ocorreu um erro ao processar a requisição.",
+                message_data: "Ocorreu um erro ao processar a requisição.",
+            };
         }
     }
+    
     
 }

@@ -51,11 +51,11 @@ export function MovimentacaoData({ movimentacoes, categorias }: MovimentacaoData
 
     return (
         <>
-            <section className="flex flex-col gap-4 bg-slate-800 w-4/5 max-w-[1024px] min-h-[565px] mt-4 p-6 rounded">
+            <section className="flex flex-col gap-4 border border-red-900w-4/5 max-w-[1024px] min-h-[565px] mt-4 p-6 rounded">
                 <div className="flex justify-between">
                     <h2 className="text-2xl font-bold">Movimentações</h2>
                     <Link href="/movimentacoes/new">
-                        <Button color="primary" startContent={<Plus />}>nova movimentação</Button>
+                        <Button color="primary" startContent={<Plus />} className="bg-red-800"> movimentação</Button>
                     </Link>
                 </div>
 

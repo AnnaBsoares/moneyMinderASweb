@@ -19,18 +19,18 @@ export default async function Categorias() {
     <main className="flex min-h-screen flex-col items-center">
       <NavBar active="categorias" />
 
-      <section className="flex flex-col gap-2 bg-slate-800 min-w-[600px] mt-4 p-2 rounded">
+      <section className="flex flex-col gap-2 border-2 p-10 border-red-900 min-w-[600px] mt-4  rounded">
         <div className="flex justify-between">
           <h2 className="text-2xl font-bold">Categorias Cadastradas</h2>
-          <Link href="/categorias/new">
-            <Button color="primary" startContent={<Plus />}>nova categoria</Button>
-          </Link>
+         
         </div>
         
         {categorias.map(categoria =>
           <CategoriaItem categoria={categoria} />
         )}
-        
+         <Link href="/categorias/new">
+            <Button color="primary" startContent={<Plus />} className="bg-red-800 w-full  mt-10">adicionar categoria</Button>
+          </Link>
       </section>
 
 
